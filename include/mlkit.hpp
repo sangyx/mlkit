@@ -5,12 +5,13 @@
 #include <assert.h>
 #include <random>
 #include <iostream>
-#include <fstream>
+#include <tuple>
 #include <vector>
 #include <string>
+#include <unordered_map>
+#include <fstream>
 #include <utility>
 #include <numeric>
-#include <unordered_map>
 
 #include "arrayfire.h"
 
@@ -37,5 +38,8 @@ namespace mk {
 #endif
 
 #include "utils/data.hpp"
+#include "utils/broadcasting.hpp"
+#include "preprocessing/standard_scaler.hpp"
+#include "preprocessing/minmax_scaler.hpp"
 #include "statistics/linear_model/linear_regression.hpp"
 #endif

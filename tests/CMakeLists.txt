@@ -40,6 +40,6 @@ ENDMACRO()
 PACKAGE_ADD_TEST(
     MLKIT_TEST
     main.cpp
-    utils_test.cpp
-    linear_regression_test.cpp
+    preprocessing_test.cpp
+    linear_model_test.cpp
 )

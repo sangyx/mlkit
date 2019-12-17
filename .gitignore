@@ -37,3 +37,6 @@ bin/
 
 # Checkpoints
 .ipynb_checkpoints/
+
+# VSCode
+.vscode/

@@ -1,8 +1,10 @@
-#ifndef DATA_HPP
-#define DATA_HPP
+#ifndef MLKIT_DATA_HPP
+#define MLKIT_DATA_HPP
 
-namespace mk{
-	namespace utils{
+namespace mk
+{
+	namespace utils
+	{
 		template<typename T>
 		af::array load_dataset(const std::string& path)
 		{
