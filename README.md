@@ -25,14 +25,14 @@ int main(int argc, char **argv)
 
 ## ToDo
 * 统计学习：
-    - [] cluster.KMeans
-    - [] decomposition.PCA
-    - [] mixture.GaussianMixture
-    - [] svm.LinearSVC, svm.LinearSVR
-    - [] tree.DecisionTreeClassifier, tree.DecisionTreeRegressor
+    - [ ] cluster.KMeans
+    - [ ] decomposition.PCA
+    - [ ] mixture.GaussianMixture
+    - [ ] svm.LinearSVC, svm.LinearSVR
+    - [ ] tree.DecisionTreeClassifier, tree.DecisionTreeRegressor
 * 集成学习：
-    - [] ensemble.AdaBoostClassifier
-    - [] ensemble.AdaBoostRegressor
+    - [ ] ensemble.AdaBoostClassifier
+    - [ ] ensemble.AdaBoostRegressor
 
 ## 手记系列
 
