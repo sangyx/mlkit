@@ -45,6 +45,7 @@ int main(int argc, char **argv)
 
 This output would be:
 ```bash
+# compiler command
 g++ -std=c++11 -g example.cpp -o test -I/opt/arrayfire/include -I/usr/local/mlkit/include -laf -L/opt/arrayfire/lib
 
 # output
