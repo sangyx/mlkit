@@ -42,4 +42,6 @@ namespace mk {
 #include "preprocessing/standard_scaler.hpp"
 #include "preprocessing/minmax_scaler.hpp"
 #include "statistics/linear_model/linear_regression.hpp"
+#include "statistics/linear_model/logistic_regression.hpp"
+// #include "statistics/neighbors/kneighbors_classifier.hpp"
 #endif

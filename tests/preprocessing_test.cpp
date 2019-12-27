@@ -39,8 +39,8 @@ TEST_F(PreprocessingTest, MinMaxScalerTest)
     {
         if((bool)mm.flag_(i).scalar<char>())
         {
-            EXPECT_FLOAT_EQ(min(X_mm(span, i), 0).scalar<float>(), 0);
-            EXPECT_FLOAT_EQ(max(X_mm(span, i), 0).scalar<float>(), 1);
+            EXPECT_NEAR(min(X_mm(span, i), 0).scalar<float>(), 0, 1e-6);
+            EXPECT_NEAR(max(X_mm(span, i), 0).scalar<float>(), 1, 1e-6);
         }
     }
 }
