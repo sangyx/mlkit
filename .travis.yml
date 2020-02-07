@@ -8,8 +8,8 @@ env:
     # Global build options and C++ flags
     - CXX_FLAGS="-Wall -pedantic -Werror -Wno-variadic-macros -Wno-long-long -Wno-shadow"
     # Misc
-    - RUN_TESTS=true
-    - COVERAGE=false
+    # - RUN_TESTS=true
+    # - COVERAGE=false
 
 matrix:
   include:
@@ -69,7 +69,7 @@ script:
      - sudo mkdir -p build
      - sudo mkdir -p bin
      - cd build
-     - sudo cmake ${CMAKE_OPTIONS} -DCMAKE_CXX_FLAGS=${CXX_FLAGS} -DCMAKE_BUILD_TYPE=Coverage -DBUILD_TESTS=ON ..
+     - sudo cmake ${CMAKE_OPTIONS} -DCMAKE_CXX_FLAGS=${CXX_FLAGS} -DCMAKE_BUILD_TYPE=Coverage -DBUILD_TESTS=ON -DBUILD_CUDA=OFF ..
      - sudo make
      - cd ../bin
      - sudo ./MLKIT_TEST_CPU

@@ -25,6 +25,7 @@ SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 
 # Options. Turn on with 'cmake -Dmyvarname=ON'.
 option(BUILD_TESTS "Build all tests." OFF) # Makes boolean 'test' available.
+option(BUILD_CUDA "Build CUDA tests." ON) # Makes boolean 'test' available.
 
 IF(BUILD_TESTS)
     ADD_SUBDIRECTORY(tests)
