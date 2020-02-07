@@ -65,13 +65,13 @@ script:
     ############################################################################
     # Build main and tests
     ############################################################################
-     - mkdir -p build
-     - mkdir -p bin
+     - sudo mkdir -p build
+     - sudo mkdir -p bin
      - cd build
-     - cmake ${CMAKE_OPTIONS} -DCMAKE_CXX_FLAGS=${CXX_FLAGS} -DCMAKE_BUILD_TYPE=Coverage -DBUILD_TESTS=ON ..
-     - make
+     - sudo cmake ${CMAKE_OPTIONS} -DCMAKE_CXX_FLAGS=${CXX_FLAGS} -DCMAKE_BUILD_TYPE=Coverage -DBUILD_TESTS=ON ..
+     - sudo make
      - cd ../bin
-     - ./MLKIT_TEST_CPU
+     - sudo ./MLKIT_TEST_CPU
 
 after_success:
     - codecov -t 585bde79-970a-4715-b848-bdb5081cdbf7 -X gcov
