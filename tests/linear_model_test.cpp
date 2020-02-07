@@ -19,7 +19,7 @@ TEST(LinearModelTestCase, LinearRegressionTest)
 
 TEST(LinearModelTestCase, LogisticRegressionTest)
 {
-    array data = utils::load_dataset<float>("/home/sangyx/mlkit/tests/data/logistic_regression.txt");
+    array data = utils::load_dataset<float>("../tests/data/logistic_regression.txt");
     array X = data.cols(0, 1);
     array y = data.col(2);
     linear_model::LogisticRegression lr = linear_model::LogisticRegression(true);

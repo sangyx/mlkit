@@ -9,7 +9,7 @@ class PreprocessingTest: public testing::Test
 protected:
     virtual void SetUp()
     {
-        array data = utils::load_dataset<float>("/home/sangyx/mlkit/tests/data/linear_regression.txt");
+        array data = utils::load_dataset<float>("../tests/data/linear_regression.txt");
         X = data.cols(0, 1);
 
     }
