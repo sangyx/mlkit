@@ -1,5 +1,7 @@
 ENABLE_TESTING()
 
+SET(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../.travis/cmake)
+
 # Find the required package.
 FIND_PACKAGE(GTest REQUIRED)
 FIND_PACKAGE(ArrayFire REQUIRED)
@@ -13,23 +15,23 @@ MACRO(PACKAGE_ADD_TEST TESTNAME)
     ADD_LIBRARY(TEST_CORE OBJECT ${ARGN})
 
     IF(ArrayFire_CPU_FOUND)
-    #IF(${ArrayFire_CPU_FOUND})
         # MESSAGE(STATUS "ArrayFire CPU backend found. Enabling CPU benchmark")
         ADD_EXECUTABLE(${TESTNAME}_CPU $<TARGET_OBJECTS:TEST_CORE>)
         TARGET_LINK_LIBRARIES(${TESTNAME}_CPU ${ArrayFire_CPU_LIBRARIES}
            ${GTEST_LIBRARIES} -lpthread -lm)
         ADD_TEST(NAME ${TESTNAME}_CPU COMMAND ${TESTNAME}_CPU)
+
+        IF(CMAKE_BUILD_TYPE STREQUAL "Coverage")
+            INCLUDE(CodeCoverage)
+            SETUP_TARGET_FOR_COVERAGE(${TESTNAME}_COV ${TESTNAME}_CPU coverage)
+
+            SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
+            SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
+        ENDIF() #CMAKE_BUILD_TYPE STREQUAL "Coverage"
     ENDIF()
 
     # ArrayFire CUDA backend
-    # FIND_PACKAGE(CUDA)
     IF(ArrayFire_CUDA_FOUND)
-    # IF(${ArrayFire_CUDA_FOUND} AND ${CUDA_FOUND})
-        # We need to find CUDA and NVVM as transitive linking is disabled on some OSes
-        # FIND_PACKAGE(CUDA REQUIRED)
-        # FIND_PACKAGE(NVVM REQUIRED)
-        # MESSAGE(STATUS ${CUDA_TOOLKIT_ROOT_DIR})
-        # MESSAGE(STATUS "ArrayFire CUDA found. Enabling CUDA benchmark")
         ADD_EXECUTABLE(${TESTNAME}_CUDA  $<TARGET_OBJECTS:TEST_CORE>)
         TARGET_LINK_LIBRARIES(${TESTNAME}_CUDA ${ArrayFire_CUDA_LIBRARIES}
             ${GTEST_LIBRARIES} -lpthread -lm)

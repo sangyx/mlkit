@@ -1,0 +1,76 @@
+language: cpp
+
+env:
+  global:
+    # Ubuntu version
+    - LINUX_DIST=trusty
+    - DEPS_DIR=${TRAVIS_BUILD_DIR}/deps
+    # Global build options and C++ flags
+    - CXX_FLAGS="-Wall -pedantic -Werror -Wno-variadic-macros -Wno-long-long -Wno-shadow"
+    # Misc
+    - RUN_TESTS=true
+    - COVERAGE=false
+
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: true
+      compiler: gcc
+      addons:
+       apt:
+         packages: &precise_latest_boost_packages
+           - gcc-7.4
+           - g++-7.4
+           - libgtest-dev
+
+before_install:
+    # Combine global build options with OS/compiler-dependent options
+    - export CMAKE_OPTIONS=${CMAKE_OPTIONS}" "${ENV_CMAKE_OPTIONS}
+    - export CXX_FLAGS=${CXX_FLAGS}" "${ENV_CXX_FLAGS}
+
+install:
+    - if [ "$CXX" = "clang++" ] && [ "$TRAVIS_OS_NAME" = "linux" ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
+    - echo ${PATH}
+    - echo ${CXX}
+    - ${CXX} --version
+    - ${CXX} -v
+    - sudo pip install codecov
+
+    # Download and install recent cmake
+    - |
+      if [[ ${TRAVIS_OS_NAME} == "linux" ]]; then
+        CMAKE_URL="http://www.cmake.org/files/v3.5/cmake-3.5.1-Linux-x86_64.tar.gz"
+        mkdir -p ${DEPS_DIR}/cmake
+        travis_retry wget --no-check-certificate --quiet -O - ${CMAKE_URL} | tar --strip-components=1 -xz -C ${DEPS_DIR}/cmake
+        export PATH=${DEPS_DIR}/cmake/bin:${PATH}
+      fi
+
+    - wget https://arrayfire.s3.amazonaws.com/3.6.4/ArrayFire-v3.6.4_Linux_x86_64.sh
+    - ./ArrayFire-v3.6.4_Linux_x86_64.sh --include-subdir --prefix=/opt
+    - echo /opt/arrayfire/lib64 > /etc/ld.so.conf.d/arrayfire.conf
+    - sudo ldconfig
+
+    - cd /usr/src/gtest
+    - sudo mkdir build
+    - cd build
+    - sudo cmake ..
+    - sudo make
+    - sudo cp libgtest*.a /usr/local/lib
+
+
+script:
+    ############################################################################
+    # Build main and tests
+    ############################################################################
+     - mkdir -p build
+     - mkdir -p bin
+     - cd build
+     - cmake ${CMAKE_OPTIONS} -DCMAKE_CXX_FLAGS=${CXX_FLAGS} -DCMAKE_BUILD_TYPE=Coverage -DBUILD_TESTS=ON ..
+     - make
+     - cd ../bin
+     - ./MLKIT_TEST_CPU
+
+
+after_success:
+    - codecov -t 585bde79-970a-4715-b848-bdb5081cdbf7 -X gcov

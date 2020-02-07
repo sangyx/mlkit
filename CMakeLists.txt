@@ -23,7 +23,9 @@ SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 # we have custom CMake configuration files, tell CMake to use them:
 # LIST(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
 
-OPTION(PACKAGE_TESTS "Build the tests" ON)
-IF(PACKAGE_TESTS)
+# Options. Turn on with 'cmake -Dmyvarname=ON'.
+option(BUILD_TESTS "Build all tests." OFF) # Makes boolean 'test' available.
+
+IF(BUILD_TESTS)
     ADD_SUBDIRECTORY(tests)
 ENDIF()

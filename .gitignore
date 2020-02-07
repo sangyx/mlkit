@@ -40,3 +40,5 @@ bin/
 
 # VSCode
 .vscode/
+
+travis-gtest-cmake-example/
