@@ -1,7 +1,8 @@
 # MLKIT
-> A HEADER-ONLY LIBRARY PROVIDES SKLEARN-LIKE API WITH GPU SUPPORT.
 
 [![Build Status](https://travis-ci.com/sangyx/mlkit.svg?branch=master)](https://travis-ci.com/sangyx/mlkit) [![codecov](https://codecov.io/gh/sangyx/mlkit/branch/master/graph/badge.svg)](https://codecov.io/gh/sangyx/mlkit)
+
+> A HEADER-ONLY LIBRARY PROVIDES SKLEARN-LIKE API WITH GPU SUPPORT.
 
 ## 依赖库
 * [ArrayFire(矩阵计算)](http://arrayfire.org/)

@@ -46,8 +46,9 @@ install:
         export PATH=${DEPS_DIR}/cmake/bin:${PATH}
       fi
 
-    - wget https://arrayfire.s3.amazonaws.com/3.6.4/ArrayFire-v3.6.4_Linux_x86_64.sh
-    - sudo ./ArrayFire-v3.6.4_Linux_x86_64.sh --include-subdir --prefix=/opt
+    - mkdir -p ${DEPS_DIR}/arrayfire
+    - wget https://arrayfire.s3.amazonaws.com/3.6.4/ArrayFire-v3.6.4_Linux_x86_64.sh -O /${DEPS_DIR}/ArrayFire-v3.6.4_Linux_x86_64.sh
+    - sudo sh ${DEPS_DIR}/ArrayFire-v3.6.4_Linux_x86_64.sh --include-subdir --prefix=/opt
     - sudo echo /opt/arrayfire/lib64 > /etc/ld.so.conf.d/arrayfire.conf
     - sudo ldconfig
 
@@ -70,7 +71,6 @@ script:
      - make
      - cd ../bin
      - ./MLKIT_TEST_CPU
-
 
 after_success:
     - codecov -t 585bde79-970a-4715-b848-bdb5081cdbf7 -X gcov
