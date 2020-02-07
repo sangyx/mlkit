@@ -72,8 +72,7 @@ script:
      - sudo cmake ${CMAKE_OPTIONS} -DCMAKE_CXX_FLAGS=${CXX_FLAGS} -DCMAKE_BUILD_TYPE=Coverage -DBUILD_TESTS=ON -DBUILD_CUDA=OFF ..
      - sudo make
      - sudo make MLKIT_TEST_COV
-     - cd ../bin
-     - sudo ./MLKIT_TEST_CPU
+     - sudo ./../bin/MLKIT_TEST_CPU
 
 after_success:
     - codecov -t 585bde79-970a-4715-b848-bdb5081cdbf7 -X gcov
