@@ -22,6 +22,7 @@ matrix:
          packages: &precise_latest_boost_packages
            - gcc-7
            - g++-7
+           - lcov
            - libgtest-dev
            - cmake
 
