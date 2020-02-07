@@ -6,7 +6,7 @@ using namespace af;
 
 TEST(LinearModelTestCase, LinearRegressionTest)
 {
-    array data = utils::load_dataset<float>("/home/sangyx/mlkit/tests/data/linear_regression.txt");
+    array data = utils::load_dataset<float>("../tests/data/linear_regression.txt");
     array X = data.cols(0, 1);
     array y = data.col(2);
     linear_model::LinearRegression lr = linear_model::LinearRegression(false);
