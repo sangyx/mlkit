@@ -55,6 +55,7 @@ install:
 
     - cd /usr/src/gtest
     - sudo mkdir build
+    - cd build/
     - sudo cmake ..
     - sudo make
     - sudo cp libgtest*.a /usr/local/lib
