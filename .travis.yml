@@ -23,6 +23,7 @@ matrix:
            - gcc-7
            - g++-7
            - libgtest-dev
+           - cmake
 
 before_install:
     # Combine global build options with OS/compiler-dependent options
@@ -38,13 +39,13 @@ install:
     - sudo pip install codecov
 
     # Download and install recent cmake
-    - |
-      if [[ ${TRAVIS_OS_NAME} == "linux" ]]; then
-        CMAKE_URL="http://www.cmake.org/files/v3.5/cmake-3.5.1-Linux-x86_64.tar.gz"
-        mkdir -p ${DEPS_DIR}/cmake
-        travis_retry wget --no-check-certificate --quiet -O - ${CMAKE_URL} | tar --strip-components=1 -xz -C ${DEPS_DIR}/cmake
-        export PATH=${DEPS_DIR}/cmake/bin:${PATH}
-      fi
+    # - |
+    #   if [[ ${TRAVIS_OS_NAME} == "linux" ]]; then
+    #     CMAKE_URL="http://www.cmake.org/files/v3.5/cmake-3.5.1-Linux-x86_64.tar.gz"
+    #     mkdir -p ${DEPS_DIR}/cmake
+    #     travis_retry wget --no-check-certificate --quiet -O - ${CMAKE_URL} | tar --strip-components=1 -xz -C ${DEPS_DIR}/cmake
+    #     export PATH=${DEPS_DIR}/cmake/bin:${PATH}
+    #   fi
 
     - mkdir -p ${DEPS_DIR}/arrayfire
     - wget https://arrayfire.s3.amazonaws.com/3.6.4/ArrayFire-v3.6.4_Linux_x86_64.sh -O /${DEPS_DIR}/ArrayFire-v3.6.4_Linux_x86_64.sh
