@@ -3,7 +3,7 @@ language: cpp
 env:
   global:
     # Ubuntu version
-    - LINUX_DIST=trusty
+    - LINUX_DIST=bionic
     - DEPS_DIR=${TRAVIS_BUILD_DIR}/deps
     # Global build options and C++ flags
     - CXX_FLAGS="-Wall -pedantic -Werror -Wno-variadic-macros -Wno-long-long -Wno-shadow"
@@ -14,14 +14,14 @@ env:
 matrix:
   include:
     - os: linux
-      dist: trusty
+      dist: bionic
       sudo: true
       compiler: gcc
       addons:
        apt:
          packages: &precise_latest_boost_packages
-           - gcc-7.4
-           - g++-7.4
+           - gcc-7
+           - g++-7
            - libgtest-dev
 
 before_install:
