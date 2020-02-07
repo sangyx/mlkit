@@ -53,12 +53,9 @@ install:
     - sudo sh -c "echo /opt/arrayfire/lib64 > /etc/ld.so.conf.d/arrayfire.conf"
     - sudo ldconfig
 
-    - cd /usr/src/gtest
-    - sudo mkdir build
-    - cd build
-    - sudo cmake ..
-    - sudo make
-    - sudo cp libgtest*.a /usr/local/lib
+    - sudo cmake /usr/src/gtest
+    - sudo make -C /usr/src/gtest
+    - sudo cp /usr/src/gtest/libgtest*.a /usr/local/lib
 
 
 script:
