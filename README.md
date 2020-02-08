@@ -1,6 +1,6 @@
 # MLKIT
 
-![language](https://img.shields.io/badge/language-cpp-orange.svg)[![Build Status](https://travis-ci.com/sangyx/mlkit.svg?branch=master)](https://travis-ci.com/sangyx/mlkit) [![codecov](https://codecov.io/gh/sangyx/mlkit/branch/master/graph/badge.svg)](https://codecov.io/gh/sangyx/mlkit)![license](https://img.shields.io/github/license/sangyx/mlkit)
+![language](https://img.shields.io/badge/language-cpp-orange.svg) [![Build Status](https://travis-ci.com/sangyx/mlkit.svg?branch=master)](https://travis-ci.com/sangyx/mlkit) [![codecov](https://codecov.io/gh/sangyx/mlkit/branch/master/graph/badge.svg)](https://codecov.io/gh/sangyx/mlkit) ![license](https://img.shields.io/github/license/sangyx/mlkit)
 
 > A HEADER-ONLY LIBRARY PROVIDES SKLEARN-LIKE API WITH GPU SUPPORT.
 
