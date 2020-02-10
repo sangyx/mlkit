@@ -26,6 +26,10 @@ TEST(LinearModelTestCase, LogisticRegressionTest)
     array X = data.cols(0, feat-1);
     array y = data.col(feat);
     auto [X_train, y_train, X_test, y_test] = utils::train_test_split(X, y, 0.7);
+    af_print(X_train);
+    af_print(y_train);
+    af_print(X_test);
+    af_print(y_test);
     linear_model::LogisticRegression lr = linear_model::LogisticRegression(true, "l2", 0.01, 0);
     lr.fit(X_train, y_train);
     EXPECT_GT(lr.score(X_test, y_test), 0.9);
