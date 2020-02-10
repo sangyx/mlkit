@@ -72,6 +72,10 @@ namespace mk
 				y_test.row(i-train_num) = y.row(idx[i]);
 			}
 
+			af_print(X_train);
+			af_print(y_train);
+			af_print(X_test);
+			af_print(y_test);
 			return std::make_tuple(X_train, y_train, X_test, y_test);
 		}
 	}
