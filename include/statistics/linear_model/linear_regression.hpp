@@ -12,8 +12,6 @@ namespace mk{
                 void fit(const af::array& X, const af::array& y);
                 af::array predict(const af::array& X) const;
                 float score(const af::array& X, const af::array& y);
-                // af::array get_params(bool deep);
-                // af::array set_params();
             private:
                 bool fit_intercept_, normalize_, copy_X_;
         };
@@ -38,8 +36,8 @@ namespace mk{
             af::array weight = af::matmul(af::inverse(af::matmul(X_copy.T(), X_copy)), X_copy.T(), y);
 
             if(this->fit_intercept_){
-                this->coef_ = weight(af::seq(1, af::end), 0);
-                this->intercept_ = weight(0, 0);
+                this->coef_ = weight(af::seq(1, af::end), af::span);
+                this->intercept_ = weight(0);
             }else{
                 this->coef_ = weight;
             }
@@ -54,7 +52,9 @@ namespace mk{
 
         inline float LinearRegression::score(const af::array& X, const af::array& y){
             af::array y_hat = this->predict(X);
-            return af::matmul((y - y_hat).T(), y - y_hat).scalar<float>() / 2;
+            float mse = af::sum<float>(af::pow(y - y_hat, 2)) / y.elements();
+            std::cout << "Mean Sqaure Error: " << mse << std::endl;
+            return mse;
         }
     }
 }

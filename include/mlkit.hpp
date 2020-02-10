@@ -9,6 +9,9 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
+#include <algorithm>
+#include <numeric>
+#include <random>
 #include <fstream>
 #include <utility>
 #include <numeric>
@@ -39,9 +42,10 @@ namespace mk {
 
 #include "utils/data.hpp"
 #include "utils/broadcasting.hpp"
+#include "utils/metrics.hpp"
 #include "preprocessing/standard_scaler.hpp"
 #include "preprocessing/minmax_scaler.hpp"
 #include "statistics/linear_model/linear_regression.hpp"
 #include "statistics/linear_model/logistic_regression.hpp"
-// #include "statistics/neighbors/kneighbors_classifier.hpp"
+#include "statistics/neighbors/kneighbors_classifier.hpp"
 #endif

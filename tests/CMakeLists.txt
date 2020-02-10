@@ -15,7 +15,7 @@ MACRO(PACKAGE_ADD_TEST TESTNAME)
     ADD_LIBRARY(TEST_CORE OBJECT ${ARGN})
 
     MESSAGE( STATUS "CPU = ${ArrayFire_CPU_FOUND}.")
-    MESSAGE( STATUS "CUDA = ${ArrayFire_CUDA_FOUND}.")
+    MESSAGE( STATUS "CUDA = ${ArrayFire_CUDA_FOUND}. BUILD_CUDA = ${BUILD_CUDA}.")
 
     IF(ArrayFire_CPU_FOUND)
         # MESSAGE(STATUS "ArrayFire CPU backend found. Enabling CPU benchmark")
@@ -48,4 +48,5 @@ PACKAGE_ADD_TEST(
     main.cpp
     preprocessing_test.cpp
     linear_model_test.cpp
+    neighbors_test.cpp
 )

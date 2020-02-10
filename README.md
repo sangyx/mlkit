@@ -77,18 +77,22 @@ lr.intercept_
 fit error: 0.8954
 ```
 
-## ToDo
+## 实现算法
 * 统计学习：
+    - [ x ] linear_model.LinearRegression
+    - [ x ] linear_model.LogisticRegression
+    - [ x ] neighbors.KNeighborsClassifier
     - [ ] cluster.KMeans
     - [ ] decomposition.PCA
     - [ ] mixture.GaussianMixture
-    - [ ] svm.LinearSVC, svm.LinearSVR
-    - [ ] tree.DecisionTreeClassifier, tree.DecisionTreeRegressor
+    - [ ] svm.LinearSVC
+    - [ ] tree.DecisionTreeClassifier
+    - [ ] naive_bayes.CategoricalNB
 * 集成学习：
+    - [ ] ensemble.RandomForestClassifier
     - [ ] ensemble.AdaBoostClassifier
-    - [ ] ensemble.AdaBoostRegressor
 
-## 手记系列
+<!-- ## 手记系列
 
 ### 数学基础
 * [数学分析](https://www.sangyx.cn/281)
@@ -102,10 +106,8 @@ fit error: 0.8954
 * [决策树](https://www.sangyx.cn/1195)
 
 ### 优化
-* [梯度下降](https://www.sangyx.cn/261)
+* [梯度下降](https://www.sangyx.cn/261) -->
 
 ## 参考
 * 李航. 统计学习方法[M]. 2012.
 * Peter Harrington. 机器学习实战[M]. 2013.
-* 华校专. AI算法工程师手册[EB/OL]. <http://www.huaxiaozhuan.com/>.
-* Christopher M Bishop. Pattern Recognition and Machine Learning[M]. 2006.
