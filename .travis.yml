@@ -5,11 +5,6 @@ env:
     # Ubuntu version
     - LINUX_DIST=bionic
     - DEPS_DIR=${TRAVIS_BUILD_DIR}/deps
-    # Global build options and C++ flags
-    - CXX_FLAGS="-Wall -pedantic -Werror -Wno-variadic-macros -Wno-long-long -Wno-shadow"
-    # Misc
-    # - RUN_TESTS=true
-    # - COVERAGE=false
 
 matrix:
   include:
@@ -28,14 +23,12 @@ matrix:
             - libgtest-dev
             - cmake
 
-before_install:
-    # Combine global build options with OS/compiler-dependent options
-    - export CMAKE_OPTIONS=${CMAKE_OPTIONS}" "${ENV_CMAKE_OPTIONS}
-    - export CXX_FLAGS=${CXX_FLAGS}" "${ENV_CXX_FLAGS}
+# before_install:
+#     # Combine global build options with OS/compiler-dependent options
+#     - export CMAKE_OPTIONS=${CMAKE_OPTIONS}" "${ENV_CMAKE_OPTIONS}
+#     - export CXX_FLAGS=${CXX_FLAGS}" "${ENV_CXX_FLAGS}
 
 install:
-    - export CC=gcc-7
-    - export CXX=g++-7
     - echo ${PATH}
     - echo ${CXX}
     - ${CXX} --version
@@ -63,8 +56,7 @@ script:
       - sudo mkdir -p build
       - sudo mkdir -p bin
       - cd build
-      - sudo cmake ${CMAKE_OPTIONS} -DCMAKE_CXX_FLAGS=${CXX_FLAGS} -DCMAKE_BUILD_TYPE=Coverage -DBUILD_TESTS=ON -DBUILD_CUDA=OFF ..
-      - sudo make
+      - sudo cmake -DCMAKE_BUILD_TYPE=Coverage -DBUILD_TESTS=ON -DBUILD_CUDA=OFF ..
       - sudo make MLKIT_TEST_COV
 
 after_success:
