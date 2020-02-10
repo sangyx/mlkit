@@ -22,9 +22,12 @@ TEST(LinearModelTestCase, LinearRegressionTest)
 TEST(LinearModelTestCase, LogisticRegressionTest)
 {
     array data = utils::load_dataset<float>("../tests/data/logistic_regression.txt");
+    af_print(data);
     int feat = data.dims(1) - 1;
     array X = data.cols(0, feat-1);
     array y = data.col(feat);
+    af_print(X);
+    af_print(y);
     auto [X_train, y_train, X_test, y_test] = utils::train_test_split(X, y, 0.7);
     af_print(X_train);
     af_print(y_train);
