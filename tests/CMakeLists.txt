@@ -28,9 +28,7 @@ MACRO(PACKAGE_ADD_TEST TESTNAME)
             SET(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../.travis/cmake)
             INCLUDE(CodeCoverage)
             SETUP_TARGET_FOR_COVERAGE(${TESTNAME}_COV ${TESTNAME}_CPU coverage)
-
-            SET(CMAKE_CXX_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
-            SET(CMAKE_C_FLAGS "-g -O0 -fprofile-arcs -ftest-coverage")
+            SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 -fprofile-arcs -ftest-coverage")
         ENDIF() #CMAKE_BUILD_TYPE STREQUAL "Coverage"
     ENDIF()
 
