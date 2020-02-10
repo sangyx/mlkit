@@ -51,6 +51,8 @@ namespace mk
 
 		inline std::tuple<af::array, af::array, af::array, af::array> train_test_split(af::array & X, af::array & y, float train_size, int random_state=-1, bool shuffle=true)
 		{
+			std::cout << X.dims() << std::endl;
+			std::cout << X.dims(0) << std::endl;
 			int m = X.dims(0), n = X.dims(1), p = y.dims(1);
 			int train_num = ceil(m * train_size), test_num = m - train_num;
 			std::vector<int> idx(m);
@@ -58,6 +60,9 @@ namespace mk
 
 			if(shuffle)
 				std::shuffle(idx.begin(), idx.end(), std::default_random_engine(random_state));
+
+			for(int i = 0; i < m; ++i)
+				std::cout << idx[i] << std::endl;
 
 			af::array X_train(train_num, n), y_train(train_num, p), X_test(test_num, n), y_test(test_num, p);
 			for(int i = 0; i < train_num; ++i)
@@ -72,10 +77,6 @@ namespace mk
 				y_test.row(i-train_num) = y.row(idx[i]);
 			}
 
-			af_print(X_train);
-			af_print(y_train);
-			af_print(X_test);
-			af_print(y_test);
 			return std::make_tuple(X_train, y_train, X_test, y_test);
 		}
 	}
