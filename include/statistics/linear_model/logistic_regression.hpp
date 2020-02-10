@@ -34,7 +34,6 @@ namespace mk{
             }
 
             af::array weight = af::randn(X_copy.dims(1), y.dims(1));
-            af_print(weight);
             int iter;
             float err;
             for(iter = 0; iter < this->max_iter_; ++iter){
@@ -47,7 +46,6 @@ namespace mk{
 
                 if(this->verbose_ && (iter + 1) % 100 == 0)
                 {
-                    af_print(weight);
                     std::cout << "Iteration " << (iter + 1) << " Err: " << err << std::endl;
                 }
 

@@ -51,8 +51,6 @@ namespace mk
 
 		inline std::tuple<af::array, af::array, af::array, af::array> train_test_split(af::array & X, af::array & y, float train_size, int random_state=-1, bool shuffle=true)
 		{
-			std::cout << X.dims() << std::endl;
-			std::cout << X.dims(0) << std::endl;
 			int m = X.dims(0), n = X.dims(1), p = y.dims(1);
 			int train_num = ceil(m * train_size), test_num = m - train_num;
 			std::vector<int> idx(m);
@@ -61,20 +59,19 @@ namespace mk
 			if(shuffle)
 				std::shuffle(idx.begin(), idx.end(), std::default_random_engine(random_state));
 
-			for(int i = 0; i < m; ++i)
-				std::cout << idx[i] << std::endl;
-
 			af::array X_train(train_num, n), y_train(train_num, p), X_test(test_num, n), y_test(test_num, p);
 			for(int i = 0; i < train_num; ++i)
 			{
-				X_train.row(i) = X.row(idx[i]);
-				y_train.row(i) = y.row(idx[i]);
+				std::cout << idx[i] << std::endl;
+				X_train(i, af::span) = X.row(idx[i]);
+				y_train(i, af::span) = y.row(idx[i]);
 			}
 
 			for(int i = train_num; i < m; ++i)
 			{
-				X_test.row(i-train_num) = X.row(idx[i]);
-				y_test.row(i-train_num) = y.row(idx[i]);
+				std::cout << idx[i] << std::endl;
+				X_test(i-train_num, af::span) = X.row(idx[i]);
+				y_test(i-train_num, af::span) = y.row(idx[i]);
 			}
 
 			return std::make_tuple(X_train, y_train, X_test, y_test);
