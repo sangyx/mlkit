@@ -79,9 +79,9 @@ fit error: 0.8954
 
 ## 实现算法
 * 统计学习：
-    - [ x ] linear_model.LinearRegression
-    - [ x ] linear_model.LogisticRegression
-    - [ x ] neighbors.KNeighborsClassifier
+    - [x] linear_model.LinearRegression
+    - [x] linear_model.LogisticRegression
+    - [x] neighbors.KNeighborsClassifier
     - [ ] cluster.KMeans
     - [ ] decomposition.PCA
     - [ ] mixture.GaussianMixture
