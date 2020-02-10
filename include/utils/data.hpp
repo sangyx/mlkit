@@ -62,16 +62,16 @@ namespace mk
 			af::array X_train(train_num, n), y_train(train_num, p), X_test(test_num, n), y_test(test_num, p);
 			for(int i = 0; i < train_num; ++i)
 			{
-				std::cout << idx[i] << std::endl;
-				X_train(i, af::span) = X.row(idx[i]);
-				y_train(i, af::span) = y.row(idx[i]);
+				X_train.row(i) = X.row(idx[i]);
+				y_train.row(i) = y.row(idx[i]);
+				af_print(X_train.row(i));
+				af_print(X.row(idx[i]));
 			}
 
 			for(int i = train_num; i < m; ++i)
 			{
-				std::cout << idx[i] << std::endl;
-				X_test(i-train_num, af::span) = X.row(idx[i]);
-				y_test(i-train_num, af::span) = y.row(idx[i]);
+				X_test.row(i-train_num) = X.row(idx[i]);
+				y_test.row(i-train_num) = y.row(idx[i]);
 			}
 
 			return std::make_tuple(X_train, y_train, X_test, y_test);
