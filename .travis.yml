@@ -19,13 +19,13 @@ matrix:
           packages: &precise_latest_boost_packages
             - gcc-7
             - g++-7
-            # - build-essential
-            # - libfreeimage-dev
-            # - cmake-curses-gui
-            # - libopenblas-dev
-            # - libfftw3-dev
-            # - liblapacke-dev
-            # - libboost-all-dev
+            - build-essential
+            - libfreeimage-dev
+            - cmake-curses-gui
+            - libopenblas-dev
+            - libfftw3-dev
+            - liblapacke-dev
+            - libboost-all-dev
             - lcov
             - libgtest-dev
             - cmake
@@ -42,11 +42,19 @@ install:
     - ${CXX} -v
     - sudo pip install codecov
 
-    - mkdir -p ${DEPS_DIR}/arrayfire
-    - wget https://arrayfire.s3.amazonaws.com/3.6.4/ArrayFire-v3.6.4_Linux_x86_64.sh -O /${DEPS_DIR}/ArrayFire-v3.6.4_Linux_x86_64.sh
-    - sudo sh ${DEPS_DIR}/ArrayFire-v3.6.4_Linux_x86_64.sh --include-subdir --prefix=/opt
-    - sudo sh -c "echo /opt/arrayfire/lib64 > /etc/ld.so.conf.d/arrayfire.conf"
-    - sudo ldconfig
+    # - mkdir -p ${DEPS_DIR}/arrayfire
+    # - wget https://arrayfire.s3.amazonaws.com/3.6.4/ArrayFire-v3.6.4_Linux_x86_64.sh -O /${DEPS_DIR}/ArrayFire-v3.6.4_Linux_x86_64.sh
+    # - sudo sh ${DEPS_DIR}/ArrayFire-v3.6.4_Linux_x86_64.sh --include-subdir --prefix=/opt
+    # - sudo sh -c "echo /opt/arrayfire/lib64 > /etc/ld.so.conf.d/arrayfire.conf"
+    # - sudo ldconfig
+
+    - cd ${DEPS_DIR}
+    - git clone --recursive https://github.com/arrayfire/arrayfire.git
+    - cd arrayfire
+    - mkdir build && cd build
+    - cmake .. -DCMAKE_BUILD_TYPE=Release
+    - make -j8
+    - make install
 
     - cd /usr/src/gtest
     - sudo mkdir build
