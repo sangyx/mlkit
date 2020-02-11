@@ -64,8 +64,6 @@ namespace mk
 			{
 				X_train.row(i) = X.row(idx[i]);
 				y_train.row(i) = y.row(idx[i]);
-				af_print(X_train.row(i));
-				af_print(X.row(idx[i]));
 			}
 
 			for(int i = train_num; i < m; ++i)

@@ -19,13 +19,13 @@ matrix:
           packages: &precise_latest_boost_packages
             - gcc-7
             - g++-7
-            - build-essential
-            - libfreeimage-dev
-            - cmake-curses-gui
-            - libopenblas-dev
-            - libfftw3-dev
-            - liblapacke-dev
-            - libboost-all-dev
+            # - build-essential
+            # - libfreeimage-dev
+            # - cmake-curses-gui
+            # - libopenblas-dev
+            # - libfftw3-dev
+            # - liblapacke-dev
+            # - libboost-all-dev
             - lcov
             - libgtest-dev
             - cmake
