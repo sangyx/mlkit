@@ -25,7 +25,7 @@ TEST_F(PreprocessingTest, StandardScalerTest)
         if((bool)ss.flag_(i).scalar<char>())
         {
             EXPECT_NEAR(mean(X_ss(span, i), 0).scalar<float>(), 0, 1e-6);
-            EXPECT_FLOAT_EQ(var(X_ss(span, i), false, 0).scalar<float>(), 1);
+            EXPECT_NEAR(var(X_ss(span, i), false, 0).scalar<float>(), 1, 1e-6);
         }
 
     }
