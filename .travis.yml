@@ -54,7 +54,7 @@ install:
     - mkdir arrayfire/build && cd arrayfire/build
     - cmake .. -DCMAKE_BUILD_TYPE=Release -DAF_BUILD_CUDA=OFF -DAF_BUILD_OPENCL=OFF -DAF_BUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF
     - make -j8
-    - make install
+    - sudo make install
 
     - cd /usr/src/gtest
     - sudo mkdir build
