@@ -51,9 +51,8 @@ install:
     - mkdir -p ${DEPS_DIR}
     - cd ${DEPS_DIR}
     - git clone --recursive https://github.com/arrayfire/arrayfire.git
-    - cd arrayfire
-    - mkdir build && cd build
-    - cmake .. -DCMAKE_BUILD_TYPE=Release
+    - mkdir arrayfire/build && cd arrayfire/build
+    - cmake .. -DCMAKE_BUILD_TYPE=Release -DAF_BUILD_CUDA=OFF -DAF_BUILD_OPENCL=OFF -DAF_BUILD_EXAMPLES=OFF -DBUILD_TESTING=OFF
     - make -j8
     - make install
 
