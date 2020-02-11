@@ -4,11 +4,11 @@
 
 > A HEADER-ONLY LIBRARY PROVIDES SKLEARN-LIKE API WITH GPU SUPPORT.
 
-## 依赖库
-* [ArrayFire(矩阵计算)](http://arrayfire.org/)
-* [gtest(单元测试)](https://github.com/google/googletest)
+## Dependencies
+* [ArrayFire](http://arrayfire.org/): a general purpose GPU library.
+* [Googletest](https://github.com/google/googletest): Google Testing and Mocking Framework.
 
-## 使用示例
+## Examples
 ```cpp
 #include "mlkit.hpp"
 
@@ -77,8 +77,8 @@ lr.intercept_
 fit error: 0.8954
 ```
 
-## 实现算法
-* 统计学习：
+## Algorithms
+* Statistical Learning：
     - [x] linear_model.LinearRegression
     - [x] linear_model.LogisticRegression
     - [x] neighbors.KNeighborsClassifier
@@ -88,7 +88,7 @@ fit error: 0.8954
     - [ ] svm.LinearSVC
     - [ ] tree.DecisionTreeClassifier
     - [ ] naive_bayes.CategoricalNB
-* 集成学习：
+* Ensemble Learning：
     - [ ] ensemble.RandomForestClassifier
     - [ ] ensemble.AdaBoostClassifier
 
@@ -108,6 +108,6 @@ fit error: 0.8954
 ### 优化
 * [梯度下降](https://www.sangyx.cn/261) -->
 
-## 参考
+## Reference
 * 李航. 统计学习方法[M]. 2012.
-* Peter Harrington. 机器学习实战[M]. 2013.
+* Harrington P. Machine Learning in Action[M]. 2012.
