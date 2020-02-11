@@ -22,14 +22,10 @@ TEST(LinearModelTestCase, LinearRegressionTest)
 TEST(LinearModelTestCase, LogisticRegressionTest)
 {
     array a = randu(10, 2);
-    array b = randu(2, 2);
 
     af_print(a);
+    array b = a.row(1);
     af_print(b);
-
-    a.row(3) = b.row(1);
-
-    af_print(a);
 
     array data = utils::load_dataset<float>("../tests/data/logistic_regression.txt");
     int feat = data.dims(1) - 1;
