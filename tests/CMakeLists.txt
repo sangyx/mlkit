@@ -47,4 +47,5 @@ PACKAGE_ADD_TEST(
     preprocessing_test.cpp
     linear_model_test.cpp
     neighbors_test.cpp
+    cluster_test.cpp
 )

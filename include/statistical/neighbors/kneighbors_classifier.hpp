@@ -38,10 +38,7 @@ namespace mk{
                 {
                     int idx = indices(j, i).scalar<unsigned int>();
                     float label = this->y_(idx, 0).scalar<float>();
-                    if(score.find(label) == score.end())
-                        score[label] = 1;
-                    else
-                        score[label]++;
+                    score[label]++;
                 }
                 std::vector<std::pair<float, int>> score_vec(score.begin(), score.end());
                 std::sort(score_vec.begin(), score_vec.end(), [](const std::pair<float, int>& lhs, const std::pair<float, int>& rhs){

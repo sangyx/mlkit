@@ -82,11 +82,11 @@ fit error: 0.8954
     - [x] linear_model.LinearRegression
     - [x] linear_model.LogisticRegression
     - [x] neighbors.KNeighborsClassifier
-    - [ ] cluster.KMeans
+    - [x] cluster.KMeans
     - [ ] decomposition.PCA
+    - [ ] tree.DecisionTreeClassifier
     - [ ] mixture.GaussianMixture
     - [ ] svm.LinearSVC
-    - [ ] tree.DecisionTreeClassifier
     - [ ] naive_bayes.CategoricalNB
 * Ensemble Learning：
     - [ ] ensemble.RandomForestClassifier

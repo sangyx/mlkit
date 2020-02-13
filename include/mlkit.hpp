@@ -8,6 +8,7 @@
 #include <tuple>
 #include <vector>
 #include <string>
+#include <unordered_set>
 #include <unordered_map>
 #include <algorithm>
 #include <numeric>
@@ -45,7 +46,8 @@ namespace mk {
 #include "utils/metrics.hpp"
 #include "preprocessing/standard_scaler.hpp"
 #include "preprocessing/minmax_scaler.hpp"
-#include "statistics/linear_model/linear_regression.hpp"
-#include "statistics/linear_model/logistic_regression.hpp"
-#include "statistics/neighbors/kneighbors_classifier.hpp"
+#include "statistical/linear_model/linear_regression.hpp"
+#include "statistical/linear_model/logistic_regression.hpp"
+#include "statistical/neighbors/kneighbors_classifier.hpp"
+#include "statistical/cluster/kmeans.hpp"
 #endif
