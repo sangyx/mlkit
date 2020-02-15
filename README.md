@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 
         af::info();
         af::array X = af::randn(100, 3);
-        af::array y = 1 * X(af::span, 0) + 2 * X(af::span, 1) + 3 * X(af::span, 2) + 4 + af::randu(100, 1) * 0.5;
+        af::array y = 1 * X.col(0) + 2 * X.col(1) + 3 * X.col(2) + 4 + af::randu(100, 1) * 0.5;
         linear_model::LinearRegression lr = linear_model::LinearRegression(true);
         lr.fit(X, y);
         cout << endl \
@@ -37,8 +37,8 @@ int main(int argc, char **argv)
              << "fit result: " << endl;
         af_print(lr.coef_);
         af_print(lr.intercept_)
-        cout << "-----------------------------------------------" << endl \
-             << "fit error: " << lr.score(X, y) << endl;
+        cout << "-----------------------------------------------" << endl;
+        lr.score(X, y);
     } catch (af::exception &ae) {
         cerr << ae.what() << endl;
     }
@@ -46,10 +46,10 @@ int main(int argc, char **argv)
 }
 ```
 
-This output would be:
+The output:
 ```bash
 # compiler command
-g++ -std=c++11 -g example.cpp -o test -I/opt/arrayfire/include -I/usr/local/mlkit/include -laf -L/opt/arrayfire/lib
+g++ -std=c++11 -g example.cpp -o test -I/opt/arrayfire/include -Imlkit/include -laf -L/opt/arrayfire/lib
 
 # output
 ArrayFire v3.7.0 (CPU, 64-bit Linux, build c30d5455)
@@ -74,7 +74,7 @@ lr.intercept_
    Strides: [1 4 4 4]
     4.2475
 -----------------------------------------------
-fit error: 0.8954
+Mean Sqaure Error: 0.01791
 ```
 
 ## Algorithms
