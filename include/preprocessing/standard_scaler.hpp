@@ -10,7 +10,7 @@ namespace mk
                 af::array scale_;
                 af::array mean_;
                 af::array var_;
-                af::array flag_;
+                std::vector<bool> flag_;
 
                 StandardScaler(bool with_mean=true, bool with_std=true);
 
@@ -32,8 +32,11 @@ namespace mk
                 this->mean_ = af::mean(X, 0);
             if(this->with_std_){
                 this->var_ = af::var(X, false, 0);
-                this->flag_ = !af::iszero(this->var_);
                 this->scale_ = af::sqrt(this->var_);
+                for(int i = 0; i < this->var_.dims(1); ++i)
+                {
+                    this->flag_.push_back(af::allTrue<bool>(this->var_.col(i)));
+                }
             }
         }
 
@@ -42,7 +45,7 @@ namespace mk
             af::array X_copy = X;
             for(int i = 0; i < X.dims(1); ++i)
             {
-                if(this->flag_(af::span, i).scalar<char>())
+                if(this->flag_[i])
                 {
                     if(this->with_mean_)
                         X_copy(af::span, i) = batchFunc(X_copy(af::span, i), this->mean_(af::span, i), utils::bsub);

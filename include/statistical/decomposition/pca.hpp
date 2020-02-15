@@ -27,8 +27,8 @@ namespace mk
             af::array X_norm = batchFunc(X, this->mean_, utils::bsub);
             af::array u, s, vt;
             af::svd(u, s, vt, X_norm);
-            this->components_ = vt(af::seq(this->n_components_), af::span);
-            this->explained_variance_ = s(af::seq(this->n_components_), af::span);
+            this->components_ = vt.rows(0, this->n_components_);
+            this->explained_variance_ = s.rows(0, this->n_components_);
             this->explained_variance_ratio_ = this->explained_variance_ / af::sum<float>(s);
         }
 

@@ -52,7 +52,7 @@ namespace mk{
                 weight -= this->lr_ * (af::matmulTN(X_copy, h - y) + this->C_ * weight) / m;
             }
             std::cout << "Training stopped after " << iter << " iterations" << std::endl;
-            this->coef_ = weight(af::seq(1, af::end), af::span);
+            this->coef_ = weight.rows(1, af::end);
             this->intercept_ = weight(0);
         }
 

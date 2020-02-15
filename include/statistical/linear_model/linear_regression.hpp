@@ -36,7 +36,7 @@ namespace mk{
             af::array weight = af::matmul(af::inverse(af::matmul(X_copy.T(), X_copy)), X_copy.T(), y);
 
             if(this->fit_intercept_){
-                this->coef_ = weight(af::seq(1, af::end), af::span);
+                this->coef_ = weight.rows(1, af::end);
                 this->intercept_ = weight(0);
             }else{
                 this->coef_ = weight;

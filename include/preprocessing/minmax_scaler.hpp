@@ -14,7 +14,7 @@ namespace mk
             af::array data_min_;
             af::array data_max_;
             af::array data_range_;
-            af::array flag_;
+            std::vector<bool> flag_;
 
             MinMaxScaler(std::pair<float, float> feature_range=std::make_pair(0, 1));
             void fit(af::array &X);
@@ -34,15 +34,19 @@ namespace mk
             this->data_range_ = this->data_max_ - this->data_min_;
             this->scale_ = (this->feature_range_.second - this->feature_range_.first) / this->data_range_;
             this->min_ = this->feature_range_.first - this->data_min_ * this->scale_;
-            this->flag_ = !af::iszero(this->data_range_);
+
+            for(int i = 0; i < this->data_range_.dims(1); ++i)
+            {
+                this->flag_.push_back(af::allTrue<bool>(this->data_range_.col(i)));
+            }
         }
 
         inline af::array MinMaxScaler::transform(af::array &X)
         {
             af::array X_copy = X;
             for(int i = 0; i < X.dims(1); ++i){
-                if((bool)this->flag_(af::span, i).scalar<char>())
-                    X_copy(af::span, i) = batchFunc(batchFunc(X_copy(af::span, i), this->scale_(af::span, i), utils::bmul), this->min_(af::span, i), utils::badd);
+                if(this->flag_[i])
+                    X_copy.col(i) = batchFunc(batchFunc(X_copy.col(i), this->scale_.col(i), utils::bmul), this->min_.col(i), utils::badd);
             }
             return X_copy;
         }
