@@ -83,7 +83,7 @@ fit error: 0.8954
     - [x] linear_model.LogisticRegression
     - [x] neighbors.KNeighborsClassifier
     - [x] cluster.KMeans
-    - [ ] decomposition.PCA
+    - [x] decomposition.PCA
     - [ ] tree.DecisionTreeClassifier
     - [ ] mixture.GaussianMixture
     - [ ] svm.LinearSVC

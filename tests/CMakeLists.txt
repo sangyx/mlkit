@@ -41,11 +41,8 @@ MACRO(PACKAGE_ADD_TEST TESTNAME)
     ENDIF()
 ENDMACRO()
 
+FILE(GLOB ALL_TESTS "*.cpp")
 PACKAGE_ADD_TEST(
     MLKIT_TEST
-    main.cpp
-    preprocessing_test.cpp
-    linear_model_test.cpp
-    neighbors_test.cpp
-    cluster_test.cpp
+    ${ALL_TESTS}
 )

@@ -50,4 +50,5 @@ namespace mk {
 #include "statistical/linear_model/logistic_regression.hpp"
 #include "statistical/neighbors/kneighbors_classifier.hpp"
 #include "statistical/cluster/kmeans.hpp"
+#include "statistical/decomposition/pca.hpp"
 #endif
