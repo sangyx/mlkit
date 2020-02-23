@@ -84,7 +84,7 @@ Mean Sqaure Error: 0.01791
     - [x] neighbors.KNeighborsClassifier
     - [x] cluster.KMeans
     - [x] decomposition.PCA
-    - [ ] tree.DecisionTreeClassifier
+    - [x] tree.DecisionTreeClassifier
     - [ ] mixture.GaussianMixture
     - [ ] svm.LinearSVC
     - [ ] naive_bayes.CategoricalNB

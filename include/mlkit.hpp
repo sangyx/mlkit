@@ -51,4 +51,5 @@ namespace mk {
 #include "statistical/neighbors/kneighbors_classifier.hpp"
 #include "statistical/cluster/kmeans.hpp"
 #include "statistical/decomposition/pca.hpp"
+#include "statistical/tree/decision_tree_classifier.hpp"
 #endif
