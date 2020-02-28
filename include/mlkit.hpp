@@ -16,6 +16,7 @@
 #include <fstream>
 #include <utility>
 #include <numeric>
+#include <cmath>
 
 #include "arrayfire.h"
 
@@ -52,4 +53,5 @@ namespace mk {
 #include "statistical/cluster/kmeans.hpp"
 #include "statistical/decomposition/pca.hpp"
 #include "statistical/tree/decision_tree_classifier.hpp"
+#include "statistical/mixture/gaussian_mixture.hpp"
 #endif

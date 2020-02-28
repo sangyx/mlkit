@@ -85,11 +85,10 @@ Mean Sqaure Error: 0.01791
     - [x] cluster.KMeans
     - [x] decomposition.PCA
     - [x] tree.DecisionTreeClassifier
-    - [ ] mixture.GaussianMixture
+    - [x] mixture.GaussianMixture
     - [ ] svm.LinearSVC
     - [ ] naive_bayes.CategoricalNB
 * Ensemble Learning：
-    - [ ] ensemble.RandomForestClassifier
     - [ ] ensemble.AdaBoostClassifier
 
 <!-- ## 手记系列
