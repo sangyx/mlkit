@@ -87,7 +87,6 @@ Mean Sqaure Error: 0.01791
     - [x] tree.DecisionTreeClassifier
     - [x] mixture.GaussianMixture
     - [ ] svm.LinearSVC
-    - [ ] naive_bayes.CategoricalNB
 * Ensemble Learning：
     - [ ] ensemble.AdaBoostClassifier
 

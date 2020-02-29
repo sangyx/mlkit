@@ -56,15 +56,12 @@ namespace mk
                     {
                         af::array z = af::batchFunc(X.row(j), this->means_.row(k), utils::bsub);
 
-                        // std::cout << (sqrt(pow(2 * M_PI, n_features) * abs(af::det<float>(this->covariances_[k])))) << std::endl;
-
                         gamma(j, k) = this->weights_.row(k) * af::exp(-af::matmul(z, af::inverse(this->covariances_[k]), z.T()) / 2.0) / (sqrt(pow(2 * M_PI, n_features) * abs(af::det<float>(this->covariances_[k]))));
                     }
                 }
 
-                // af_print(gamma);
-
                 gamma = af::batchFunc(gamma, af::sum(gamma, 1), utils::bdiv);
+
                 af::array means = af::constant(0, this->n_components_, n_features);
                 af::array weights = af::constant(0, this->n_components_);
                 std::vector<af::array> covariances;
@@ -88,7 +85,7 @@ namespace mk
                 if(af::max<float>(af::abs(means - this->means_)) < this->tol_)
                     this->converged_ = true;
                 this->means_ = means;
-                this->weights_ = weights_;
+                this->weights_ = weights;
                 this->covariances_ = covariances;
                 if(this->converged_)
                     break;
