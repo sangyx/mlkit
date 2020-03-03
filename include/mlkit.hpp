@@ -54,4 +54,5 @@ namespace mk {
 #include "statistical/decomposition/pca.hpp"
 #include "statistical/tree/decision_tree_classifier.hpp"
 #include "statistical/mixture/gaussian_mixture.hpp"
+#include "statistical/svm/linear_svc.hpp"
 #endif

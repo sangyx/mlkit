@@ -86,9 +86,7 @@ Mean Sqaure Error: 0.01791
     - [x] decomposition.PCA
     - [x] tree.DecisionTreeClassifier
     - [x] mixture.GaussianMixture
-    - [ ] svm.LinearSVC
-* Ensemble Learning：
-    - [ ] ensemble.AdaBoostClassifier
+    - [x] svm.LinearSVC
 
 <!-- ## 手记系列
 
